@@ -4,6 +4,9 @@
   "description": "t",
   "main": "./public/index.html",
   "bin": "./private",
+  "repository": {
+    "url": "https://github.com/kubaissen/Goodpoint"
+  },
   "dependencies": {
     "babel": "^6.5.2",
     "babel-cli": "^6.18.0",
