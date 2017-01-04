@@ -1,12 +1,22 @@
-module.exports = (env) => {
-  entry: './public/index,js',
-
-
+'use strict';
+module.exports = {
+  entry: './private/index.js',
+  output: {
+    path: './public/',
+    filename: 'index.js'
+  },
   module: {
-    rules: [{
-      test: /\.css$/,
-      exclude: /node_modules/,
-      loader: 'css-loader'
-    }]
+    loaders: [
+      // the 'transform-runtime' plugin tells babel to require the runtime
+      // instead of inlining it.
+      {
+        test: /\.es6$/,
+        exclude: /(node_modules|bower_components)/,
+        loader: 'babel-loader',
+        query: {
+          presets: ['es2015']
+        }
+      }
+    ]
   }
-}
+};
