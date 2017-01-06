@@ -1,6 +1,7 @@
 'use strict';
 module.exports = {
-  initStatus: require('./engine/init.js')
+  //return instance of enigma
+  Enigma: require('./engine/GoodPoint.es6')
 };
 
-console.log(module.exports.initStatus);
+console.log('modStatus', module.exports.Enigma);

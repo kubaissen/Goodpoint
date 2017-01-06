@@ -1,0 +1,33 @@
+{
+  "name": "good-move-anim",
+  "description": "t",
+  "main": "./public/index.html",
+  "authors": [
+    "Jaroslaw L"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "Balls",
+    "Falling",
+    "fall",
+    "ball"
+  ],
+  "homepage": "https://github.com/kubaissen/Goodpoint",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "typescript-dotnet": "TypeScript.NET#^4.0.1",
+    "source-map-to-comment": "^1.1.0",
+    "source-map-support": "*",
+    "source-reader": "*",
+    "DefinitelyTyped": "*"
+  },
+  "devDependencies": {
+    "source-map-url": "^0.3.0"
+  }
+}

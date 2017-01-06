@@ -3,8 +3,10 @@ module.exports = {
   entry: './private/index.js',
   output: {
     path: './public/',
-    filename: 'index.js'
+    filename: 'index.js',
+
   },
+
   module: {
     loaders: [
       // the 'transform-runtime' plugin tells babel to require the runtime
@@ -14,9 +16,15 @@ module.exports = {
         exclude: /(node_modules|bower_components)/,
         loader: 'babel-loader',
         query: {
-          presets: ['es2015']
+          presets: ['latest'],
         }
+      },
+      {
+        test: /\.css$/,
+        exclude: /(node_modules|bower_components)/,
+        loader: 'style.css'
       }
     ]
-  }
+  },
+
 };

@@ -2,7 +2,7 @@
   "name": "good-move-anim",
   "version": "0.6.9",
   "description": "t",
-  "main": "./public/index.html",
+  "main": "./public/index.js",
   "bin": "./private",
   "repository": {
     "url": "https://github.com/kubaissen/Goodpoint"
@@ -17,13 +17,21 @@
     "webpack": "^2.2.0-rc.3"
   },
   "devDependencies": {
+    "babel-cli": "^6.18.0",
     "babel-plugin-transform-runtime": "^6.15.0",
     "babel-preset-env": "^1.1.4",
     "babel-preset-es2015": "^6.18.0",
+    "babel-preset-latest": "^6.16.0",
     "babel-preset-stage-0": "^6.16.0",
+    "bower": "^1.8.0",
     "css-loader": "^0.26.1",
     "eslint": "^3.12.2",
     "eslint-plugin-react": "^6.8.0",
+    "flow": "^0.2.3",
+    "flow-babel-webpack-plugin": "^1.0.1",
+    "flow-bin": "^0.37.4",
+    "flow-bin-loader": "^1.0.2",
+    "flow-canary": "^1.4.2",
     "http-server": "^0.9.0",
     "normalize.css": "^5.0.0",
     "style-loader": "^0.13.1",
@@ -31,7 +39,8 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npm http-server './public'' -p 80 -a 'fallballs.com' -o"
+    "start": "webpack -w",
+    "flow": "flow; test $? -eq 0 -o $? -eq 2"
   },
   "keywords": [
     "Balls",

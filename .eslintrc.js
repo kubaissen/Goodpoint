@@ -8,7 +8,12 @@ module.exports = {
   },
   'extends': 'eslint:recommended',
   'parserOptions': {
-    'sourceType': 'module'
+    'sourceType': 'module',
+    'browser': true,
+    // 'browserity': true,
+    'es6': true,
+    'commonjs': true,
+    'console': true
   },
   'rules': {
     'indent': [
@@ -16,7 +21,6 @@ module.exports = {
       2
     ],
     'linebreak-style': [
-      'error',
       'off'
     ],
     'quotes': [
@@ -26,6 +30,9 @@ module.exports = {
     'semi': [
       'error',
       'always'
+    ],
+    'no-console': [
+      'off'
     ]
   }
 };

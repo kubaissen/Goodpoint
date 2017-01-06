@@ -63,628 +63,81 @@
 /******/ 	__webpack_require__.p = "";
 
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ 	return __webpack_require__(__webpack_require__.s = 5);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
+/* unknown exports provided */
+/* all exports used */
+/*!**************************!*\
+  !*** ./private/index.js ***!
+  \**************************/
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
-
-
-// let cssReset = require('normalize.css');
-
-// console.log(cssReset);
-
-let goodPoint = (function() {
-  let draw = __webpack_require__(2);
-  let status = __webpack_require__(1);
-
-  return {
-    status: draw
-  };
-
-})();
-
-module.exports = goodPoint.status;
+eval("\r\nmodule.exports = {\r\n  //return instance of enigma\r\n  Enigma: __webpack_require__(/*! ./engine/GoodPoint.es6 */ 1)\r\n};\r\n\r\nconsole.log('modStatus', module.exports.Enigma);//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiMC5qcyIsInNvdXJjZXMiOlsid2VicGFjazovLy8uL3ByaXZhdGUvaW5kZXguanM/NDFjOCJdLCJzb3VyY2VzQ29udGVudCI6WyIndXNlIHN0cmljdCc7XHJcbm1vZHVsZS5leHBvcnRzID0ge1xyXG4gIC8vcmV0dXJuIGluc3RhbmNlIG9mIGVuaWdtYVxyXG4gIEVuaWdtYTogcmVxdWlyZSgnLi9lbmdpbmUvR29vZFBvaW50LmVzNicpXHJcbn07XHJcblxyXG5jb25zb2xlLmxvZygnbW9kU3RhdHVzJywgbW9kdWxlLmV4cG9ydHMuRW5pZ21hKTtcblxuXG4vLy8vLy8vLy8vLy8vLy8vLy9cbi8vIFdFQlBBQ0sgRk9PVEVSXG4vLyAuL3ByaXZhdGUvaW5kZXguanNcbi8vIG1vZHVsZSBpZCA9IDBcbi8vIG1vZHVsZSBjaHVua3MgPSAwIl0sIm1hcHBpbmdzIjoiQUFBQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQSIsInNvdXJjZVJvb3QiOiIifQ==");
 
 /***/ },
 /* 1 */
+/* unknown exports provided */
+/* all exports used */
+/*!**************************************!*\
+  !*** ./private/engine/GoodPoint.es6 ***!
+  \**************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
- //# sourceURL
-// import {} from 'debug';
-
-var _typeof2 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
-var _typeof = typeof Symbol === "function" && _typeof2(Symbol.iterator) === "symbol" ? function (obj) {
-  return typeof obj === "undefined" ? "undefined" : _typeof2(obj);
-} : function (obj) {
-  return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj === "undefined" ? "undefined" : _typeof2(obj);
-};
-
-var cl = console.log.bind(console);
-
-var GoodPoint = function () {
-  var Name = 'GoodPoint';
-  var Environment = {
-    //default values
-    name: 'GoodPoint',
-    debug: true,
-    engineIntro: true,
-    parentElement: undefined,
-    width: 800,
-    height: 400,
-    wind: {
-      angle: '268 dec',
-      energy: 11
-    }
-  };
-
-  var Emiter = function () {
-
-    var events = {};
-
-    function setSub(eventName, callback) {
-      if (events.hasOwnProperty[eventName]) {
-        callback();
-      }
-    }
-
-    return {
-      setSub: setSub
-
-    };
-  }();
-
-  // cl(new applicationCache(0))
-
-
-  var canvas = document.createElement('canvas');
-  //ct00x
-  var c = canvas.getContext('2d');
-
-  Object.defineProperty(c, 'w', {
-    get: function get() {
-      return this.canvas.width;
-    },
-    set: function set(val) {
-      var w = val;
-      console.warn('Someone try change width');
-    }
-  });
-
-  c.setSize = function (w, h) {
-    this.w = this.canvas.width = this.canvas.style.width = w;
-    this.h = this.canvas.height = this.canvas.style.height = h;
-  };
-  c.setCenter = function () {
-    this.canvas.style.left = window.innerWidth / 2 - this.w / 2 + 'px';
-    this.canvas.style.top = window.innerHeight / 2 - this.h / 2 + 'px';
-  };
-
-  c.setSize(800, 450);
-  c.setCenter();
-
-  canvas.title = Name;
-  setStyleWithStyle(canvas, {
-    position: 'absolute',
-    backgroundColor: '#b70020',
-    color: 'white'
-  });
-
-  window.addEventListener('resize', function () {
-    c.setCenter();
-  });
-
-  /********************************************************************************************************************
-   * CONSTRUCTOR ( setSub.onConstr = call )
-   */
-  document.addEventListener('DOMContentLoaded', function () {
-
-    document.body.appendChild(canvas);
-
-    DB.init();
-    Animation.start();
-  });
-
-  //localStorrageFunction
-  var DB = {
-    key: 'DB_KEY',
-    changed: false,
-    LOCAL_DB: {
-      uniqueID: 100011155,
-      initsHistory: [Date.now()],
-      saveHistory: []
-    },
-    get uniqueID() {
-      var val = DB.LOCAL_DB.uniqueID;
-      DB.LOCAL_DB.uniqueID++;
-      DB.save();
-      return val;
-    },
-    save: function save() {
-      DB.LOCAL_DB.saveHistory.push(Date.now());
-      // localStorage.setItem(JSON.stringify(DB.LOCAL_DB));
-      localStorage.setItem(DB.key, JSON.stringify(DB.LOCAL_DB));
-    },
-    load: function load(key) {
-      // let _temp = localStorage.getItem(key);
-      // cl(_temp);
-      DB.LOCAL_DB = JSON.parse(localStorage.getItem(key));
-      // DB.save();
-
-      return 1;
-    },
-    init: function init() {
-      DB.load(DB.key) ? function () {
-        DB.LOCAL_DB.init.history.push(Date.now());
-        DB.LOCAL_DB.init.saveHistory.push(Date.now());
-      } : DB.save();
-    }
-  };
-
-  var init = function init(object) {
-    cl(object);
-  };
-
-  //   * @desc Just like dat. From nothing, in fraction of second: "we got our Universe!"
-  //   * @param {project}
-  var bigBANG = function bigBANG(params) {
-    undefined.params = params;
-    for (var props in params) {
-      try {
-        if (props in Environment) {
-          // Override default Environment values
-          if (Environment.hasOwnProperty(params) && undefined.params.hasOwnProperty(params)) {
-            Environment[props] = params[props];
-          }
-        }
-      } catch (Error) {
-        //TODO: Create more officiant error handler;.
-
-      }
-    }
-  };
-
-  // let giveMe = {
-  //   randomInt: (from, to) => {
-  //     return (Math.floor(Math.random() * (to - from + 1)) + from);
-  //   }
-  // };
-
-  function setStyleWithStyle(HTMLElement, newStyle) {
-    for (var propertyName in newStyle) {
-      if (newStyle.hasOwnProperty(propertyName) && HTMLElement.style.hasOwnProperty(propertyName)) {
-        HTMLElement.style[propertyName] = newStyle[propertyName];
-      } else {
-        throw new Error(propertyName);
-      }
-    }
-  }
-
-  var Animation = {
-    info: {
-      stKey: 'animationStatus',
-      status: 'Ready'
-    },
-    //     setStatus: (newStatus) => {
-    //       MSG.emit('status change', 'Animation.setStatus()', newStatus);
-    //       localStorage.setItem(Animation.info.stKey, newStatus);
-    //       Animation.info.status = newStatus;
-    //     },
-    startTime: 0,
-    stats: {
-      frames: 0,
-      requestedFrames: 0,
-      get FPS() {
-        return Math.floor(Animation.stats.frames / (Date.now() - Animation.startTime) * 100000) / 100;
-      }
-    },
-    draw: function draw() {
-      c.clearRect(0, 0, c.w, c.h);
-      Animation.stats.requestedFrames = window.requestAnimationFrame(Animation.draw);
-      c.fillRect(55, 55, 125, 451);
-      c.fillStyle = ob.gradients.linear.sunset;
-      c.fillRect(0, 0, c.w, c.h);
-
-      c.fillStyle = 'white';
-      c.font = '125px "Josefin Sans", sans-serif';
-      c.fillText('fall balls', 50, 200);
-
-      // c.putImageData(specialEffects.noise(c.getImageData(0, 0, 140, 140), 90), 200, 200);
-      // c.fillStyle = ob.gradients.radial.sun;
-      c.fillRect(100, 300, 30, 30);
-
-      c.fillStyle = 'white';
-      c.font = '30px "Josefin Sans", sans-serif';
-      c.fillText(Animation.stats.FPS ? Animation.stats.FPS : 'ERROR', 30, 430);
-
-      Animation.stats.frames++;
-    },
-    start: function start() {
-      Animation.info.status = 'Play';
-
-      //       Animation.ID = specialEffects.noise((new ImageData(c.w, c.h)), new color(123,11,22,1), 50);
-      MSG.emit('animationStart', 'Animation.start', 'Play');
-      Animation.startTime = Date.now();
-      window.requestAnimationFrame(Animation.draw);
-    }
-  };
-
-  var ob = {
-    gradients: {
-      linear: {
-        get sunset() {
-          // #000000 0%,#470d40 12%,#aa1b1d 26%,#ff2828 43%,#ffc528 57%,#007bff 70%,#ffffff 86%,#ffffff 100%
-          this._temp = this._temp || c.createLinearGradient(0, 0, 0, c.h);
-          this._temp.addColorStop(0.00, '#130a1d');
-          this._temp.addColorStop(0.25, '#470d40');
-          this._temp.addColorStop(0.50, '#aa0200');
-          this._temp.addColorStop(0.70, '#ff8b00');
-          this._temp.addColorStop(0.75, '#ffc528');
-          this._temp.addColorStop(0.76, '#006eff');
-          this._temp.addColorStop(1, '#000411');
-          return this._temp;
-        }
-      },
-      radial: {
-        sun: function sun() {
-          undefined._temp = undefined._temp || c.createRadialGradient(100, 100, 35, 900, 700, 200);
-          undefined._temp.addColorStop(0, 'rgba(255,255,0, 0.1)');
-          undefined._temp.addColorStop(0, 'rgba(255,255,0, 0.1)');
-        }
-      }
-    }
-  };
-
-  var Transition = function Transition(value, newValue, amountTime, functionType, callback) {
-    this.value = value;
-    this.newValue = newValue;
-    this.subValue = this.newValue > this.value ? this.newValue - this.value : this.value - this.newValue;
-    this.amountTime = amountTime;
-    this.go = this.currentTime = Date.now();
-    this.end = this.start + amountTime;
-    this.functionType = functionType;
-    this.interval = 1000 / this.actualisation;
-    this.pause = false;
-    this.quant = this.subValue / this.time;
-    this.percent = 0;
-
-    // FPS this.updates 
-  };
-
-  // cl(new Transition(1000, 1000000, 36, 'linear', function() {
-  //   cl(this);
-  // }));
-
-  var stage = function () {
-
-    var make = {
-      startUnique: 444555,
-      get uniqueID() {
-        return this.startUnique++;
-      },
-      set uniqueID(val) {
-        console.warn('uniqueID is read only!');
-      }
-    };
-
-    //timing
-    var T = {
-      START: Date.now()
-
-    };
-    //keepEvent
-    var trigger = {};
-
-    var draw = function draw() {};
-
-    var BG = {
-      layer: []
-    };
-
-    //Actor class
-    var A = function A(ID, preRender, constructor, draw) {
-      this.ID = ID;
-      this.name = name;
-      this.props = {
-        startConditions: {
-          time: null,
-          calls: []
-        },
-        endConditions: {
-          time: null,
-          trigger: []
-        }
-      };
-      this.draw = draw();
-      this.preRender = preRender;
-      this.status = 'Ready';
-      cl('id: ', this.ID);
-    };
-
-    // let a = new A(make.uniqueID, name, ()=>{
-    // cl(this);
-
-    // });
-
-    // cl(a);
-
-    var DRAW = {
-      bgLayers: [],
-      midLayers: [],
-      postprocessing: []
-    };
-  }();
-
-  var InfoBox = function () {
-
-    var form = {
-      element: document.createElement('div'),
-      node: undefined
-    };
-
-    function constr() {
-      // let name = 'InfoBox';
-      form.node = form.element.appendChild(document.createElement('div'));
-      //       form.element.setAttribute('id', name + 'ID');
-      var titleBar = form.node.appendChild(document.createElement('p'));
-      titleBar.setAttribute('class', 'info title');
-      titleBar.innerText = 'Title: Hello! Have a nice day!';
-    }
-    Emiter.setSub('onConstr', function () {
-      InfoBox.onConstr;
-    });
-
-    function createInfoBar(fn) {
-      var HTMLElement = form.node.appendChild(document.createElement('p'));
-      if (typeof fn === 'function') {
-        fn(InfoBox.onConstr);
-      }
-      HTMLElement.setAttribute('class', 'info bar');
-      HTMLElement.set = true;
-      return HTMLElement;
-    };
-
-    function run(inner) {
-      setInterval(function (e) {
-        var anim = {
-          startTime: Animation.startTime,
-          frames: Animation.stats.frames,
-          status: Animation.info.status
-        };
-        inner = '' + Math.round(anim.frames / (Date.now() - anim.startTime) * 100000) / 100; // (Date.now() - anim.startTime));
-        // return (anim.frames / anim.startTime, console.count());
-      }, 1000);
-
-      // return 'Aniamation: ' + Animation.stats.frames/Animation.startTime +  'status = ' + Animation.info.status + ', stKey = ' + Animation.info.stKey;
-    }
-    /*
-        this.bars[this.bars.length] = this.createInfoBar(run);
-        document.addEventListener('keypress', (e)=>{
-          cl(e);
-        });
-          this.visible = true;
-        this.switch = function() {
-          if (this.visible) {
-            //start animation hidding
-          }
-            return this.visible = !this.visible;
-        };
-    */
-    // let msg = {
-    //   new: (text, val, description) => {
-
-    //   },
-    //   allMsg: []
-    // };
-
-    // let data = localStorage.getItem('uniqueID') ? localStorage.setItem('uniqueID', JSON.stringify(msg)):'';//alert('ppp');
-
-    return {
-      onConstr: constr()
-
-    };
-  }();
-
-  var MSG = function () {
-
-    var key = 'emit';
-    var uniqueId = localStorage.getItem(key) || 0;
-
-    var clientsList = {};
-
-    function addSub(trigger, callback) {
-      clientsList[uniqueId] = {
-        trigger: trigger,
-        callback: callback
-      };
-      uniqueId++;
-      localStorage.setItem(key, uniqueId);
-
-      return uniqueId - 1;
-    }
-
-    function resign(emitId) {
-      clientsList[emitId] = null;
-    }
-
-    function emit(trigger, functionCall, newValue) {
-      for (var client in clientsList) {
-        if (client.trigger && client.trigger === trigger) {
-          cl(clientsList[client].callback);
-        }
-      }
-    }
-
-    return {
-      emit: emit,
-      addSub: addSub,
-      resign: resign
-    };
-  }();
-
-  var Color = function Color(r, g, b, alpha) {
-    this.default = {
-      shades: 255,
-      chanel: 1
-    };
-
-    this.r = r || this.default.shades;
-    this.g = g || this.default.shades;
-    this.b = b || this.default.shades;
-    this.alpha = alpha || this.default.chanel;
-
-    this.show = function () {
-      cl('%c ', '[                  ]' + this.get('rgb') + ' ', 'color values:  ' + this.get('rgba'));
-    };
-
-    this.DecToHex = function (val) {
-      this.hex = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'];
-      this.initValue = val;
-      this.hexValue = '';
-
-      if (this.initValue < 16) {
-        return this.hex[this.initValue];
-      }
-
-      this.recurrence = function (number) {
-        var tempValue = Math.floor(number / 16);
-        var letter = this.hex[number - tempValue * 16];
-        this.hexValue = letter + this.hexValue;
-        if (tempValue < 16) {
-          return cl(this.hexValue);
-        }
-        this.recurrence(tempValue);
-      };
-
-      return this.recurrence(this.initValue);
-    };
-
-    this.get = function (option) {
-      //Constructor
-      option = option.toLowerCase();
-      var retStr = '';
-      var rgb = this.r + ', ' + this.g + ', ' + this.b;
-      switch (option) {
-
-        case 'rgb':
-          {
-            return retStr = 'RGB(' + rgb + ')';
-          }
-
-        case 'rgba':
-          {
-            return retStr = 'RGBA(' + rgb + ', ' + this.alpha + ')';
-          }
-
-        case 'object':
-          {
-            return {
-              r: this.r,
-              g: this.g,
-              b: this.b,
-              a: this.alpha
-            };
-          }
-
-        case 'array':
-          {
-            return [this.r, this.g, this.b, this.alpha];
-          }
-
-        case 'hex':
-          {
-            return '#' + this.c(this.r) + this.DecToHex(this.g) + this.DecToHex(this.b);
-          }
-
-        default:
-          {
-            return this.get('object');
-          }
-      } //switch end
-    };
-  };
-
-  cl(new Color(255, 255, 0, 1).show());
-
-  var specialEffects = {
-    // todo: draw artefact like: shadows, light:
-    noise: function noise(imageData, noiseColor, amount) {
-      var bgColor = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : undefined;
-
-      undefined.rgb = noiseColor.get('object');
-      undefined.noiseColor = noiseColor;
-      noiseColor.show();
-      if (bgColor && (typeof bgColor === 'undefined' ? 'undefined' : _typeof(bgColor)) === 'object') {
-        undefined.bgColor = bgColor.get('object');
-      } else {
-        undefined.bgColor = undefined;
-      }
-      undefined.amout = amount;
-      undefined.imgData = imageData;
-
-      undefined.setDots = function (imgData, amout, RGB, bgRGB) {
-        for (var i = 0; i < imgData.data.length; i = i + 4) {
-          if (Math.random() < amout / 100) {
-            imgData.data[i] = RGB.r;
-            imgData.data[i + 1] = RGB.g;
-            imgData.data[i + 2] = RGB.b;
-            imgData.data[i + 3] = RGB.a;
-          } else {
-            if (!this.bgColor) return;
-            imgData.data[i] = bgRGB.r;
-            imgData.data[i + 1] = bgRGB.g;
-            imgData.data[i + 2] = bgRGB.b;
-            imgData.data[i + 3] = bgRGB.a;
-          }
-        }
-        return imgData;
-      };
-      return undefined.imgData = undefined.setDots(undefined.imgData, undefined.amout, undefined.rgb, undefined.bgColor);
-    }
-  };
-
-  return {
-    init: init,
-    createWorld: bigBANG
-  };
-}();
-
-module.exports = GoodPoint;
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _Scene = __webpack_require__(/*! ./layer/Scene.es6 */ 4);\n\nvar _Scene2 = _interopRequireDefault(_Scene);\n\nvar _Layer = __webpack_require__(/*! ./layer/Layer.es6 */ 3);\n\nvar _Layer2 = _interopRequireDefault(_Layer);\n\nvar _animation = __webpack_require__(/*! ./graph/animation.es6 */ 2);\n\nvar _animation2 = _interopRequireDefault(_animation);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\n/// #HTMLCanvasElement\n\nvar myGame = new _Scene2.default(10, 40, 600, 400); //@flow\n\nmyGame.createLayer('CSS', 'bgDraw');\n\nvar layersList = [];\nlayersList.push(new _Layer2.default('CSS'));\n\nconsole.log(_Scene2.default, _Layer2.default, _animation2.default);\n\nconsole.log('lay  : ', myGame);\nvar GoodPoint = function () {\n\n  console.log('canvas', 21);\n  // let animation = require('./animation.es6');\n  console.log('animation', _animation2.default);\n\n  // }, false);\n\n\n  return {\n    status: [status]\n  };\n}();\n\nexports.default = GoodPoint;//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiMS5qcyIsInNvdXJjZXMiOlsid2VicGFjazovLy9wcml2YXRlL2VuZ2luZS9Hb29kUG9pbnQuZXM2P2UzMDgiXSwic291cmNlc0NvbnRlbnQiOlsiLy9AZmxvd1xyXG5pbXBvcnQgU2NlbmUgZnJvbSAnLi9sYXllci9TY2VuZS5lczYnO1xyXG5pbXBvcnQgTGF5ZXIgZnJvbSAnLi9sYXllci9MYXllci5lczYnO1xyXG5pbXBvcnQgQW5pbWF0aW9uIGZyb20gJy4vZ3JhcGgvYW5pbWF0aW9uLmVzNic7XHJcbi8vLyAjSFRNTENhbnZhc0VsZW1lbnRcclxuXHJcbmxldCBteUdhbWUgPSBuZXcgU2NlbmUoMTAsIDQwLCA2MDAsIDQwMCk7XHJcbm15R2FtZS5jcmVhdGVMYXllcignQ1NTJywgJ2JnRHJhdycpO1xyXG5cclxubGV0IGxheWVyc0xpc3QgPSBbXTtcclxubGF5ZXJzTGlzdC5wdXNoKG5ldyBMYXllcignQ1NTJykpO1xyXG5cclxuY29uc29sZS5sb2coU2NlbmUsIExheWVyLCBBbmltYXRpb24pO1xyXG5cclxuXHJcbmNvbnNvbGUubG9nKCdsYXkgIDogJywgbXlHYW1lKTtcclxubGV0IEdvb2RQb2ludCA9ICgoKSA9PiB7XHJcblxyXG5cclxuXHJcbiAgY29uc29sZS5sb2coJ2NhbnZhcycsIDIxKTtcclxuICAvLyBsZXQgYW5pbWF0aW9uID0gcmVxdWlyZSgnLi9hbmltYXRpb24uZXM2Jyk7XHJcbiAgY29uc29sZS5sb2coJ2FuaW1hdGlvbicsIEFuaW1hdGlvbik7XHJcblxyXG4gIC8vIH0sIGZhbHNlKTtcclxuXHJcblxyXG5cclxuXHJcbiAgcmV0dXJuIHtcclxuICAgIHN0YXR1czogW3N0YXR1c11cclxuICB9O1xyXG5cclxufSkoKTtcclxuXHJcbmV4cG9ydCBkZWZhdWx0IEdvb2RQb2ludDtcblxuXG4vLyBXRUJQQUNLIEZPT1RFUiAvL1xuLy8gcHJpdmF0ZS9lbmdpbmUvR29vZFBvaW50LmVzNiJdLCJtYXBwaW5ncyI6Ijs7Ozs7O0FBQ0E7QUFDQTs7O0FBQUE7QUFDQTs7O0FBQUE7QUFDQTs7Ozs7QUFBQTtBQUNBO0FBQ0E7QUFDQTtBQUFBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBRUE7QUFDQTtBQUNBO0FBR0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFHQTtBQUNBO0FBREE7QUFJQTtBQUNBOyIsInNvdXJjZVJvb3QiOiIifQ==");
 
 /***/ },
 /* 2 */
+/* unknown exports provided */
+/* all exports used */
+/*!********************************************!*\
+  !*** ./private/engine/graph/animation.es6 ***!
+  \********************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
-
-
-let Draw = (() => {
-
-
-  return {
-    status: 'ok'
-  };
-
-})();
-
-module.exports = Draw.status;
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nvar Animation = function () {\n  // 'use strict';\n  console.log('this o anim: ', undefined);\n\n  // let createPaint = function(width, height) {\n\n  // };\n\n  return {\n    es6: 'ok'\n  };\n}();\n\nexports.default = Animation;//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiMi5qcyIsInNvdXJjZXMiOlsid2VicGFjazovLy9wcml2YXRlL2VuZ2luZS9ncmFwaC9hbmltYXRpb24uZXM2PzVjMzQiXSwic291cmNlc0NvbnRlbnQiOlsibGV0IEFuaW1hdGlvbiA9ICgoKCkgPT4ge1xyXG4gIC8vICd1c2Ugc3RyaWN0JztcclxuICBjb25zb2xlLmxvZygndGhpcyBvIGFuaW06ICcsIHRoaXMpO1xyXG5cclxuXHJcbiAgLy8gbGV0IGNyZWF0ZVBhaW50ID0gZnVuY3Rpb24od2lkdGgsIGhlaWdodCkge1xyXG5cclxuICAvLyB9O1xyXG5cclxuICByZXR1cm4ge1xyXG4gICAgZXM2OiAnb2snXHJcbiAgfTtcclxuXHJcbn0pKCkpO1xyXG5cclxuZXhwb3J0IGRlZmF1bHQgQW5pbWF0aW9uO1xuXG5cbi8vIFdFQlBBQ0sgRk9PVEVSIC8vXG4vLyBwcml2YXRlL2VuZ2luZS9ncmFwaC9hbmltYXRpb24uZXM2Il0sIm1hcHBpbmdzIjoiOzs7OztBQUFBO0FBQ0E7QUFDQTtBQUNBO0FBRUE7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBREE7QUFJQTtBQUNBOyIsInNvdXJjZVJvb3QiOiIifQ==");
 
 /***/ },
 /* 3 */
+/* unknown exports provided */
+/* all exports used */
+/*!****************************************!*\
+  !*** ./private/engine/layer/Layer.es6 ***!
+  \****************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n// import Scene from './Scene';\n// export default class Layer extends Scene {\n\n//   constructor(x, y, w, h, layerType){\n//   super(x, y, w , h);\n\n//   }\n\n// }\n\nvar Layer = {};\n\nexports.default = Layer;//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiMy5qcyIsInNvdXJjZXMiOlsid2VicGFjazovLy9wcml2YXRlL2VuZ2luZS9sYXllci9MYXllci5lczY/MWU5MCJdLCJzb3VyY2VzQ29udGVudCI6WyIvLyBpbXBvcnQgU2NlbmUgZnJvbSAnLi9TY2VuZSc7XHJcbi8vIGV4cG9ydCBkZWZhdWx0IGNsYXNzIExheWVyIGV4dGVuZHMgU2NlbmUge1xyXG5cclxuLy8gICBjb25zdHJ1Y3Rvcih4LCB5LCB3LCBoLCBsYXllclR5cGUpe1xyXG4vLyAgIHN1cGVyKHgsIHksIHcgLCBoKTtcclxuXHJcbi8vICAgfVxyXG5cclxuLy8gfVxyXG5cclxubGV0IExheWVyID0ge1xyXG5cclxufTtcclxuXHJcbmV4cG9ydCBkZWZhdWx0IExheWVyO1xuXG5cbi8vIFdFQlBBQ0sgRk9PVEVSIC8vXG4vLyBwcml2YXRlL2VuZ2luZS9sYXllci9MYXllci5lczYiXSwibWFwcGluZ3MiOiI7Ozs7O0FBQUE7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBR0EiLCJzb3VyY2VSb290IjoiIn0=");
 
-module.exports = {
-  initStatus: __webpack_require__(0)
-};
+/***/ },
+/* 4 */
+/* unknown exports provided */
+/* all exports used */
+/*!****************************************!*\
+  !*** ./private/engine/layer/Scene.es6 ***!
+  \****************************************/
+/***/ function(module, exports, __webpack_require__) {
 
-console.log(module.exports.initStatus);
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if (\"value\" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();\n\nfunction _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError(\"Cannot call a class as a function\"); } }\n\nvar Scene = function () {\n  //flow\n\n  /**\r\n   * @param  {int} x\r\n   * @param  {int} y\r\n   * @param  {} w\r\n   * @param  {width} h\r\n   * @param  {} layers\r\n   * @param  {0};for(letdepthinlayers} {this.x=x;this.y=y;this.w=this.width=w;this.h=this.height=h;this.layers={depth\r\n   */\n  function Scene(x, y, w, h) {\n    _classCallCheck(this, Scene);\n\n    this.x = x;\n    this.y = y;\n    this.w = this.width = w;\n    this.h = this.height = h;\n    this.layersList = [];\n  }\n\n  _createClass(Scene, [{\n    key: 'addLayer',\n    value: function addLayer(type) {\n      this.layers.push({\n        HTMLElement: document.createElement(type),\n        nodeElement: document.body.appendChild(HTMLElement),\n        c: function c() {\n          return nodeElement.getContext('2d');\n        }\n      });\n    }\n  }, {\n    key: 'moveTo',\n    value: function moveTo(newX, newY) {\n      console.log('mvw');\n    }\n    // this.build = {}\n    // console.dir(this.build());\n\n  }, {\n    key: 'build',\n    value: function build(HTMLName, name) {\n      this.layers[this.layers.depth++] = {\n        inst: this.make(HTMLName),\n        name: name\n      };\n      // this.layer[this.layer.depth++] = this.make('canvas');\n      // this.layer[this.layer.depth++] = this.make('canvas');\n      // this.layer[this.layer.depth++] = this.make('div');\n      // return this.layers;\n    }\n  }, {\n    key: 'make',\n    value: function make(HTMLName) {\n      return document.body.appendChild(document.createElement(HTMLName));\n    }\n  }]);\n\n  return Scene;\n}();\n\n/*\r\n\r\nlet Canvas = ((() => {\r\n  'use strict';\r\n\r\n  let status = {\r\n    on5: 5,\r\n    description: 'Just Created.'\r\n  };\r\n\r\n\r\n\r\n  let def = {\r\n    x: 200,\r\n    y: 150,\r\n    width: 550,\r\n    height: 400,\r\n    bgColor: 'yellowgreen'\r\n  };\r\n\r\n  let drawDirection = [];\r\n\r\n  let layers = {\r\n    bgCSS: make('div'),\r\n    canvas: make('canvas'),\r\n    postProcess: make('canvas'),\r\n\r\n    point: {\r\n      x: 0,\r\n      y: 0,\r\n    },\r\n\r\n    size: {\r\n      w: 0,\r\n      h: 0,\r\n    }\r\n  };\r\n\r\n  for (let layer in layers) {\r\n    // drawDirection[drawDirection.length] += layer;\r\n    console.log(layer);\r\n  }\r\n\r\n  function setStyle(element) {\r\n    element.style.position = 'relative';\r\n  }\r\n\r\n  function setSize(w, h) {\r\n    c.w = canvas.width = canvas.style.width = w;\r\n    c.h = canvas.height = canvas.style.height = h;\r\n  }\r\n\r\n  function setPosition() {\r\n\r\n  }\r\n\r\n  function make(tag) {\r\n    return drawDirection[drawDirection.length] = document.body.appendChild(document.createElement(tag));\r\n  }\r\n\r\n  console.log(this, drawDirection);\r\n\r\n  return {\r\n    getStatus: [status.on5, status.description],\r\n    getLayernsInfo: {\r\n      fromBottom: drawDirection\r\n    },\r\n\r\n    setPosition: setPosition\r\n  };\r\n\r\n})({ 12: 22, ewqw: 'fsdf' }));\r\n\r\nmodule.exports = Screen;\r\n\r\n\r\n//*/\n\n\nexports.default = Scene;//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiNC5qcyIsInNvdXJjZXMiOlsid2VicGFjazovLy9wcml2YXRlL2VuZ2luZS9sYXllci9TY2VuZS5lczY/MGEzMCJdLCJzb3VyY2VzQ29udGVudCI6WyJleHBvcnQgZGVmYXVsdCBjbGFzcyBTY2VuZSB7XHJcbiAgLy9mbG93XHJcblxyXG4gIC8qKlxyXG4gICAqIEBwYXJhbSAge2ludH0geFxyXG4gICAqIEBwYXJhbSAge2ludH0geVxyXG4gICAqIEBwYXJhbSAge30gd1xyXG4gICAqIEBwYXJhbSAge3dpZHRofSBoXHJcbiAgICogQHBhcmFtICB7fSBsYXllcnNcclxuICAgKiBAcGFyYW0gIHswfTtmb3IobGV0ZGVwdGhpbmxheWVyc30ge3RoaXMueD14O3RoaXMueT15O3RoaXMudz10aGlzLndpZHRoPXc7dGhpcy5oPXRoaXMuaGVpZ2h0PWg7dGhpcy5sYXllcnM9e2RlcHRoXHJcbiAgICovXHJcbiAgY29uc3RydWN0b3IoeCwgeSwgdywgaCkge1xyXG4gICAgdGhpcy54ID0geDtcclxuICAgIHRoaXMueSA9IHk7XHJcbiAgICB0aGlzLncgPSB0aGlzLndpZHRoID0gdztcclxuICAgIHRoaXMuaCA9IHRoaXMuaGVpZ2h0ID0gaDtcclxuICAgIHRoaXMubGF5ZXJzTGlzdCA9IFtdO1xyXG4gIH1cclxuXHJcblxyXG4gIGFkZExheWVyKHR5cGUpIHtcclxuICAgIHRoaXMubGF5ZXJzLnB1c2goe1xyXG4gICAgICBIVE1MRWxlbWVudDogZG9jdW1lbnQuY3JlYXRlRWxlbWVudCh0eXBlKSxcclxuICAgICAgbm9kZUVsZW1lbnQ6IGRvY3VtZW50LmJvZHkuYXBwZW5kQ2hpbGQoSFRNTEVsZW1lbnQpLFxyXG4gICAgICBjOiBmdW5jdGlvbigpIHtcclxuICAgICAgICByZXR1cm4gbm9kZUVsZW1lbnQuZ2V0Q29udGV4dCgnMmQnKTtcclxuICAgICAgfVxyXG4gICAgfSlcclxuXHJcbiAgfVxyXG5cclxuICBtb3ZlVG8obmV3WCwgbmV3WSkge1xyXG4gICAgICBjb25zb2xlLmxvZygnbXZ3Jyk7XHJcbiAgICB9XHJcbiAgICAvLyB0aGlzLmJ1aWxkID0ge31cclxuICAgIC8vIGNvbnNvbGUuZGlyKHRoaXMuYnVpbGQoKSk7XHJcblxyXG4gIGJ1aWxkKEhUTUxOYW1lLCBuYW1lKSB7XHJcbiAgICB0aGlzLmxheWVyc1t0aGlzLmxheWVycy5kZXB0aCsrXSA9IHtcclxuICAgICAgaW5zdDogdGhpcy5tYWtlKEhUTUxOYW1lKSxcclxuICAgICAgbmFtZTogbmFtZVxyXG4gICAgfTtcclxuICAgIC8vIHRoaXMubGF5ZXJbdGhpcy5sYXllci5kZXB0aCsrXSA9IHRoaXMubWFrZSgnY2FudmFzJyk7XHJcbiAgICAvLyB0aGlzLmxheWVyW3RoaXMubGF5ZXIuZGVwdGgrK10gPSB0aGlzLm1ha2UoJ2NhbnZhcycpO1xyXG4gICAgLy8gdGhpcy5sYXllclt0aGlzLmxheWVyLmRlcHRoKytdID0gdGhpcy5tYWtlKCdkaXYnKTtcclxuICAgIC8vIHJldHVybiB0aGlzLmxheWVycztcclxuXHJcbiAgfVxyXG5cclxuICBtYWtlKEhUTUxOYW1lKSB7XHJcbiAgICByZXR1cm4gZG9jdW1lbnQuYm9keS5hcHBlbmRDaGlsZChkb2N1bWVudC5jcmVhdGVFbGVtZW50KEhUTUxOYW1lKSk7XHJcbiAgfVxyXG5cclxufVxyXG5cclxuXHJcbi8qXHJcblxyXG5sZXQgQ2FudmFzID0gKCgoKSA9PiB7XHJcbiAgJ3VzZSBzdHJpY3QnO1xyXG5cclxuICBsZXQgc3RhdHVzID0ge1xyXG4gICAgb241OiA1LFxyXG4gICAgZGVzY3JpcHRpb246ICdKdXN0IENyZWF0ZWQuJ1xyXG4gIH07XHJcblxyXG5cclxuXHJcbiAgbGV0IGRlZiA9IHtcclxuICAgIHg6IDIwMCxcclxuICAgIHk6IDE1MCxcclxuICAgIHdpZHRoOiA1NTAsXHJcbiAgICBoZWlnaHQ6IDQwMCxcclxuICAgIGJnQ29sb3I6ICd5ZWxsb3dncmVlbidcclxuICB9O1xyXG5cclxuICBsZXQgZHJhd0RpcmVjdGlvbiA9IFtdO1xyXG5cclxuICBsZXQgbGF5ZXJzID0ge1xyXG4gICAgYmdDU1M6IG1ha2UoJ2RpdicpLFxyXG4gICAgY2FudmFzOiBtYWtlKCdjYW52YXMnKSxcclxuICAgIHBvc3RQcm9jZXNzOiBtYWtlKCdjYW52YXMnKSxcclxuXHJcbiAgICBwb2ludDoge1xyXG4gICAgICB4OiAwLFxyXG4gICAgICB5OiAwLFxyXG4gICAgfSxcclxuXHJcbiAgICBzaXplOiB7XHJcbiAgICAgIHc6IDAsXHJcbiAgICAgIGg6IDAsXHJcbiAgICB9XHJcbiAgfTtcclxuXHJcbiAgZm9yIChsZXQgbGF5ZXIgaW4gbGF5ZXJzKSB7XHJcbiAgICAvLyBkcmF3RGlyZWN0aW9uW2RyYXdEaXJlY3Rpb24ubGVuZ3RoXSArPSBsYXllcjtcclxuICAgIGNvbnNvbGUubG9nKGxheWVyKTtcclxuICB9XHJcblxyXG4gIGZ1bmN0aW9uIHNldFN0eWxlKGVsZW1lbnQpIHtcclxuICAgIGVsZW1lbnQuc3R5bGUucG9zaXRpb24gPSAncmVsYXRpdmUnO1xyXG4gIH1cclxuXHJcbiAgZnVuY3Rpb24gc2V0U2l6ZSh3LCBoKSB7XHJcbiAgICBjLncgPSBjYW52YXMud2lkdGggPSBjYW52YXMuc3R5bGUud2lkdGggPSB3O1xyXG4gICAgYy5oID0gY2FudmFzLmhlaWdodCA9IGNhbnZhcy5zdHlsZS5oZWlnaHQgPSBoO1xyXG4gIH1cclxuXHJcbiAgZnVuY3Rpb24gc2V0UG9zaXRpb24oKSB7XHJcblxyXG4gIH1cclxuXHJcbiAgZnVuY3Rpb24gbWFrZSh0YWcpIHtcclxuICAgIHJldHVybiBkcmF3RGlyZWN0aW9uW2RyYXdEaXJlY3Rpb24ubGVuZ3RoXSA9IGRvY3VtZW50LmJvZHkuYXBwZW5kQ2hpbGQoZG9jdW1lbnQuY3JlYXRlRWxlbWVudCh0YWcpKTtcclxuICB9XHJcblxyXG4gIGNvbnNvbGUubG9nKHRoaXMsIGRyYXdEaXJlY3Rpb24pO1xyXG5cclxuICByZXR1cm4ge1xyXG4gICAgZ2V0U3RhdHVzOiBbc3RhdHVzLm9uNSwgc3RhdHVzLmRlc2NyaXB0aW9uXSxcclxuICAgIGdldExheWVybnNJbmZvOiB7XHJcbiAgICAgIGZyb21Cb3R0b206IGRyYXdEaXJlY3Rpb25cclxuICAgIH0sXHJcblxyXG4gICAgc2V0UG9zaXRpb246IHNldFBvc2l0aW9uXHJcbiAgfTtcclxuXHJcbn0pKHsgMTI6IDIyLCBld3F3OiAnZnNkZicgfSkpO1xyXG5cclxubW9kdWxlLmV4cG9ydHMgPSBTY3JlZW47XHJcblxyXG5cclxuLy8qL1xuXG5cbi8vIFdFQlBBQ0sgRk9PVEVSIC8vXG4vLyBwcml2YXRlL2VuZ2luZS9sYXllci9TY2VuZS5lczYiXSwibWFwcGluZ3MiOiI7Ozs7Ozs7Ozs7QUFBQTtBQUNBO0FBQ0E7QUFDQTs7Ozs7Ozs7QUFRQTtBQUFBO0FBQ0E7QUFBQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTs7O0FBRUE7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFMQTtBQVFBOzs7QUFFQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7OztBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBRkE7QUFJQTtBQUNBO0FBQ0E7QUFDQTtBQUVBOzs7QUFFQTtBQUNBO0FBQ0E7Ozs7OztBQUtBO0FBQ0E7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7OztBQXpEQSIsInNvdXJjZVJvb3QiOiIifQ==");
+
+/***/ },
+/* 5 */
+/* unknown exports provided */
+/* all exports used */
+/*!******************!*\
+  !*** multi main ***!
+  \******************/
+/***/ function(module, exports, __webpack_require__) {
+
+__webpack_require__(/*! ./private/index.js */0);
+(function webpackMissingModule() { throw new Error("Cannot find module \"E:\\virtualHost\\goodpoint\\flow\""); }());
+
 
 /***/ }
 /******/ ]);
