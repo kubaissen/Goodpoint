@@ -39,6 +39,6 @@ export default class Scene {
   }
 
   make(HTMLName) {
-    return document.body.appendChild(document.createElement(HTMLName))
+    return document.body.appendChild(document.createElement(HTMLName));
   }
 }
