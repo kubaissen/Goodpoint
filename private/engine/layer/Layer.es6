@@ -8,11 +8,13 @@ export default class Layer {
     this.height = this.h = h;
     this.layerType = layerType;
 
-    console.log(getLajer(this.layerType));
+    this.aa = this.getLajer('ytry');
+    console.log(this.aa);
+    console.log(this.getLajer(layerType));
   }
 
   getLajer() {
-    return document.body.appendChild(document.createElement('canvas')).getContext('2d')
+    return document.body.appendChild(document.createElement('canvas')).getContext('2d');
 
   }
 
