@@ -1,4 +1,4 @@
-/// <reference path="../../../bower_components/DefinitelyTyped/webpack" />
+/// <reference path="../../../bower_components/DefinitelyTyped/canvasjs" />
 export default class Layer {
   constructor(x, y, w, h, layerType) {
     // super();
@@ -9,7 +9,7 @@ export default class Layer {
           console.log('gry');
         },
         set(val) {
-          return new Error('fsfdsf');
+          return new Error(val);
         }
       },
     };
@@ -22,14 +22,14 @@ export default class Layer {
     this.width = this.width = w;
     this.layerType = layerType;
 
-    this.c = this.getLayer('STFU');
+    this.c = this.getLayer();
     this.canvas = this.c.canvas;
 
 
     console.log(this.c, this);
   }
 
-  getLajer() {
+  getLayer() {
     let aa = this.T.framesGap;
     this.T.framesGap = 'fds';
     return document.body.appendChild(document.createElement('canvas')).getContext('2d');

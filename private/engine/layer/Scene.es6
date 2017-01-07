@@ -1,5 +1,5 @@
 // @flow
-import Layer from './Layer.es6'
+import Layer from './Layer.es6';
 
 export default class Scene {
 
@@ -18,11 +18,13 @@ export default class Scene {
     this.w = this.width = w;
     this.h = this.height = h;
     this.layersList = [];
+    this.layers = { length: 0, };
   }
 
   createLayer(layerType) {
 
   }
+
   getFreeLayer() {
     return this.layersList[this.layersList];
   }
