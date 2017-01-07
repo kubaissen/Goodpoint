@@ -10,7 +10,7 @@ module.exports = {
   'parserOptions': {
     'sourceType': 'module',
     'browser': true,
-    // 'browserity': true,
+    'browserity': true,
     'es6': true,
     'commonjs': true,
     'console': true

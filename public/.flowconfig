@@ -1,4 +1,3 @@
 [ignore]
-.*/node_modules/.*
-.*/bower_components/.*
-<bower_components>
+<PROJECT_ROOT>/node_modules/.*
+<PROJECT_ROOT>/bower_components/.*

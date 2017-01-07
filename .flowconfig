@@ -1,0 +1,11 @@
+[ignore]
+<PROJECT_ROOT>/node_modules/.*
+<PROJECT_ROOT>/bower_components/.*
+
+[include]
+<PROJECT_ROOT>/public/.*
+<PROJECT_ROOT>/private/.*
+
+[libs]
+
+[options]
