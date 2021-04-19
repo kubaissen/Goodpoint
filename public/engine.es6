@@ -43,7 +43,7 @@ var GoodPoint = function() {
   var canvas = document.createElement('canvas');
   //ct00x
   var c = canvas.getContext('2d');
-
+c.
   Object.defineProperty(c, 'w', {
     get: function get() {
       return this.canvas.width;
